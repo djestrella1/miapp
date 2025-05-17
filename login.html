@@ -6,7 +6,6 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            /* Fondo con imagen */
             background-image: url('imagen/imagen2.jpeg');
             background-size: cover;
             background-repeat: no-repeat;
@@ -19,13 +18,14 @@
             color: #fff;
         }
         .form-container {
-            background: rgba(0, 0, 0, 0.7); /* fondo oscuro semi-transparente */
+            background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             width: 100%;
             max-width: 400px;
             color: white;
+            position: relative;
         }
         h2 {
             text-align: center;
@@ -62,11 +62,15 @@
         button:hover {
             background-color: #45a049;
         }
+        /* Estilo para el mensaje de éxito */
         .mensaje {
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border-radius: 8px;
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: 600;
         }
         .error {
             background-color: #f8d7da;
@@ -88,6 +92,10 @@
 </head>
 <body>
     <div class="form-container">
+
+        <!-- Aquí mostramos el mensaje dinámicamente -->
+        <div id="mensajeRegistro" class="mensaje" style="display:none;"></div>
+
         <h2>Iniciar Sesión</h2>
         <form action="login.php" method="POST" novalidate>
             <label>Correo electrónico</label>
@@ -102,6 +110,16 @@
             ¿No tienes cuenta? <a href="index.html">Regístrate</a>
         </p>
     </div>
+
+    <script>
+        // Detecta si viene el parámetro registro=exito para mostrar mensaje
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('registro') === 'exito') {
+            const mensajeDiv = document.getElementById('mensajeRegistro');
+            mensajeDiv.textContent = 'Usuario registrado con éxito. Ahora puedes iniciar sesión.';
+            mensajeDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
 
