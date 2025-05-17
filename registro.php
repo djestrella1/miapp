@@ -79,7 +79,7 @@ $conn->close();
         <div class="mensaje <?= $claseMensaje; ?>"><?= $mensaje; ?></div>
     <?php endif; ?>
     <p style="text-align:center; margin-top: 20px;">
-        <a href="registro.html">Volver al registro</a>
+        <a href="index.html">Volver al registro</a>
     </p>
 </body>
 </html>
